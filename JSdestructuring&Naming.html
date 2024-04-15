@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring & Naming of arrays, objects</title>
+</head>
+<body>
+   <p>code execution in console</p>
+   <script>
+    //Destructuring and Naming of arrays, objects
+
+    const firstName = "tanishi";
+    const middleName = "Singh";
+    const latsName = "kesariya"; 
+    // let Person = {
+    //     firstName : firstName,
+    //     middleName : middleName,
+    //     latsName : latsName
+    // }
+    //or, we can use only once if property and value names are same
+    let Person = {
+        firstName,
+        middleName,
+        latsName
+    }
+    let x = Person;
+
+    const todo = {
+        id : 1,
+        name : "swati"
+    }
+
+    x = todo.id; //1
+    x = todo.name; //swati or by destructuring
+    
+    //destrucrure
+    const {id, name} = todo;
+    console.log(id, name);
+
+    let arr = [
+        {fName : "richa", lName : "rawat"},
+        {hobbies : ["music", "dance", "coding"]}
+    ]
+
+    x = arr;
+    const {fName, lName} = arr[0];
+    console.log(fName, lName);
+    const {hobbies} = arr[1];
+    console.log(hobbies);
+    console.log(x);
+
+    let arr1 = [12, 34, 56, 79];
+
+    const [first, second] = arr1;
+    console.log(first, second);
+    const [one, two, ...rest] = arr1;
+    console.log(one, two, rest);
+   </script> 
+</body>
+</html>

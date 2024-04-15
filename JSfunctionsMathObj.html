@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions and Math object in javascript</title>
+</head>
+
+<body>
+    code execution can be seen in console
+    <script>
+        a();
+        //b(); // gives an error due to hoisting
+
+        //function statement or definition or declaration
+        function a() {
+            console.log("a is called");
+        };
+        //a(); //call a function
+
+        //function expression(function like a variable)
+        var b = function () {
+            console.log("b is called");
+        };
+        //b();
+
+        //anonymous functio--- function without name
+        // function (){   
+
+        // };             //but this gives error coz a function always required a name in statement
+
+        setTimeout(function () {
+            console.log("lets see settimeout after 5milliseconds");
+        }, 5000);          //we can use anonymous functions like this in js
+
+        //named function expressions
+
+        let c = function y() {
+            console.log("function as named function expression");
+        };
+        c();
+        //y();   //this gives error as y is not defined
+
+        //difference between parameteres and arguments
+
+        let sum = function (x, y, z) {       //x,y and z are parameters
+            return (x + y + z);
+        };
+        console.log(sum(3, 4, 5));           //3 4 and 5 are arguments
+
+        //first class functions or first class citizens (function like arguments to other function, return as values by another function and can be assigns as value to a variable)
+
+        function d() {
+            return "hello!";
+        }
+
+        function greetings(hellogreetings, nameS) {
+            console.log("my student!")
+        };
+
+        //printing the math object in js
+        let m = Math;
+        console.log(m);
+
+        //printing the properties or constants(8 in numbers)
+        console.log("Math.E", Math.E);              // returns Euler's number
+        console.log("Math.PI", Math.PI);            // returns PI
+        console.log("Math.SQRT2", Math.SQRT2);      // returns the square root of 2
+        console.log("Math.SQRT1_2", Math.SQRT1_2);  // returns the square root of 1/2
+        console.log("Math.LN2", Math.LN2);          // returns the natural logarithm of 2
+        console.log("Math.LN10", Math.LN10);        // returns the natural logarithm of 10
+        console.log("Math.LOG2E", Math.LOG2E);      // returns base 2 logarithm of E
+        console.log("Math.LOG10E", Math.LOG10E);    // returns base 10 logarithm of E
+
+        //printing the functions of math object
+        let f = 89;
+        let g = 6.78787;
+
+        console.log("The value of f and g is", f, g);
+        console.log("The value of rounded of f and g is", Math.round(f), Math.round(g));
+        console.log("3 raised to the power of 4", Math.pow(3,4));
+        console.log("Square root of 36 is", Math.sqrt(36));
+        console.log("Square root of 50 is", Math.sqrt(50));
+
+        //ceil and floor
+        console.log("Nearest rounded up of 4.8 is", Math.ceil(4.8));
+        console.log("Nearest rounded down of 4.8 is", Math.floor(4.8));
+
+        //absolute function
+        console.log("absolute value of 5.66", Math.abs(5.66));
+        console.log("absolute value of -5.66", Math.abs(-5.66));
+
+        //trigonometric function
+        console.log("The value of sin(PI) is", Math.sin(Math.PI));
+        console.log("The value of sin(PI/2) is", Math.sin(Math.PI));
+        console.log("The value of cos(PI/2) is", Math.sin(Math.PI));
+        console.log("The value of tan(PI/2) is", Math.sin(Math.PI));
+        
+        //min and max functions
+        console.log("Maximum value from 4, 10, 50", Math.max(4, 10,50));
+        console.log("Minimum value from 4, 10, 50", Math.min(4, 10,50));
+
+        //random generetaor
+        let r = Math.random();
+        console.log("The random number is", r);
+        //random number between 2 numbers is: a + (b-a)*Math.random();
+        
+        //if we need random number between 1 and 100
+        let r2 = 1;
+        let r3 = 100;
+        let r1_100 = r2 + r3*Math.random();
+        console.log(r1_100);
+
+        
+
+       
+    </script>
+</body>
+
+</html>

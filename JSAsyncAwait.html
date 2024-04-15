@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn Await functions</title>
+</head>
+
+<body>
+    code execution in console
+    <script>
+        let P1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Promise P1 is resolved")
+            }, 6000);
+        });
+
+        let P2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Promise P2 is resolved")
+            }, 5000);
+        });
+        
+
+        //handleData suspended by the JS engine
+        async function handleData() {
+            console.log("Hello World!");
+            let val1 = await P1;
+            console.log(val1);
+
+            let val2 = await P2;
+            console.log(val2);
+        };
+
+        handleData();
+
+        //async await examples
+
+        async function async1() {
+            console.log('Async 1');
+            await async2();  // *
+            console.log('AFter Async 1');
+        }
+
+        async function async2() {
+            console.log('FROM async 2');
+        }
+
+
+        async1();
+        console.log('Synchronous'); //** 
+        //(how execution jumps from * to **)
+
+    </script>
+</body>
+
+</html>

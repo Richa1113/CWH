@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float and clear properties in css</title>
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+        .container{
+            background-color: rgb(243, 244, 244);
+            border: 2px solid rgb(53, 19, 86);
+            width: 800px;
+            margin: 4px auto;
+        }
+        .para{
+            border: 3px solid rgb(155, 155, 217);
+            margin: 20px 30px;
+            padding: 20px 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: antiquewhite;
+        }
+        #fruit{
+            float: left;
+            width: 50%;
+
+        }
+        #computer{
+            float: left;
+            width: 50%;
+
+        }
+        #stationary{
+            float: left;
+            width: 50%;
+        }
+        #glass{
+            float: right;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="fruit"  class="para">
+            <h3>FRUIT</h3>
+            <p id="fruitPara">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate totam quam ea aliquam accusamus? Labore ipsum nobis et quidem nisi?
+            </p>
+
+        </div>
+        <div id="computer" class="para">
+            <h3>COMPUTER</h3>
+            <p id="computerPara">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate totam quam ea aliquam accusamus? Labore ipsum nobis et quidem nisi?
+            </p>
+
+        </div>
+        <div id="stationary" class="para">
+            <h3>STATIONARY</h3>
+            <p id="stationaryPara">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, porro veritatis atque quod, neque non molestias natus repudiandae dicta quae, rem maiores? Cupiditate ipsa autem in quas dolores eveniet expedita!Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate totam quam ea aliquam accusamus? Labore ipsum nobis et quidem nisi?
+            </p>
+
+        </div>
+        <div id="stationary" class="para">
+            <h3>STATIONARY</h3>
+            <p id="stationaryPara">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, porro veritatis atque quod, neque non molestias natus repudiandae dicta quae, rem maiores? Cupiditate ipsa autem in quas dolores eveniet expedita!Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate totam quam ea aliquam accusamus? Labore ipsum nobis et quidem nisi?
+            </p>
+
+        </div>
+        <div id="glass" class="para">
+            <h3>GLASSES</h3>
+            <p id="glasspara">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio, porro veritatis atque quod, neque non molestias natus repudiandae dicta quae, rem maiores? Cupiditate ipsa autem in quas dolores eveniet expedita!Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate totam quam ea aliquam accusamus? Labore ipsum nobis et quidem nisi?
+            </p>
+
+        </div>
+
+
+    </div>
+</body>
+</html>

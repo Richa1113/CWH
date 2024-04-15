@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positions</title>
+    <!-- css positions : static(default), absolute, relative, fixed, sticky -->
+    <style>
+
+        .container{
+            background-color: rgb(175, 194, 175);
+            border: 2px solid black;
+            height: 1000px;
+        }
+        .box{
+            border: 2px solid rgb(118, 79, 79);
+            background-color: aliceblue;
+            width: 100px;
+            height: 100px;
+            margin: 2px;
+            display: inline-block;
+        }
+        #box3{
+            /* position: relative to its normal position */
+            /* position: relative;
+            top: 30px;
+            left: 20px; */
+
+            /* position: absolute to its parent position */
+            /*position: absolute;
+            top: 30px;
+            left: 20px; */
+
+            /* position: fixed to its browser window */
+            /* position: fixed;
+            right: 5px; */
+            /* bottom: 5px; */
+            
+            /*stick to its top*/
+            position: sticky;
+            top: 3px;
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="box1">yes</div>
+        <div class="box" id="box2">no</div>
+        <div class="box" id="box3">yes no</div>
+        <div class="box" id="box4">no no</div>
+    </div>
+</body>
+
+</html>

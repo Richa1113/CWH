@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String and template literals</title>
+</head>
+
+<body>
+    For code execution open console
+
+    <script>
+
+        // string methods
+        let name = "richa";
+        console.log(name.length);
+        let sentence = `The name "is" richa's`;
+        console.log(sentence);
+
+        let a = `This is ${name}`;
+        console.log(a);
+
+        let b = `Adam D'Angelo`;
+        console.log(b);
+
+        console.log('har\"'.length);
+
+        let startS = "hello world, welcome to the universe";
+        console.log(startS.startsWith("hello"));
+        console.log(startS.startsWith("hello", 5));
+
+        let endsS = "hello world, welcome to the universe";
+        console.log(endsS.endsWith("universe"));
+        console.log(endsS.endsWith("universe", 27));
+        console.log(endsS.endsWith("universe", 40));
+
+        let text1 = "hello girl";
+        // let text2 = "ish";
+        // let result = text1.concat(text2);
+        // console.log(result);
+
+        let text2 = "u are beautiful";
+        let result = text1.concat(" ", text2);
+        console.log(result);
+        console.log(text2.toUpperCase());
+
+        let c = "I AM BEATUTIFUL";
+        console.log(c.toLowerCase());
+
+        text3 = "the quick brown fox jumps over the lazy dog";
+        text4 = "fox2";
+        console.log(text3.includes(text4));
+        console.log(`The "${text4}" ${text3.includes(text4) ? 'is' : 'is not'} in the sentence`); //template literal, ternary operato, interpolation
+        
+        let amtS = "Please give Rs 1000";
+        let amount = amtS.slice(15);
+        console.log(amount);
+        console.log(typeof(amount));
+        console.log(typeof Number.parseInt(amount));
+
+    </script>
+</body>
+
+</html>

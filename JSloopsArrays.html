@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loops and arrays in javascript</title>
+  </head>
+  <body>
+    for code execution open the console
+    <script>
+      //For Loop
+      //to find odd and even numbers in given array
+
+      // let numbers = [2,5,8,10,11,14,15,18,20,21,25,27];
+      // let evenNumbers = [];
+      // let oddNumbers = [];
+      // for ( let i =0; i<=numbers.length; i++)
+      // {
+      //     if(numbers[i]%2 == 0){
+      //         evenNumbers.push(numbers[i]);
+      //     }
+      //     else{
+      //         oddNumbers.push(numbers[i]);
+      //     }
+      // }
+
+      // console.log("The even numbers are:" +evenNumbers);
+      // console.log("The odd numbers are:" +oddNumbers);
+
+      //while loop
+      //print n numbers
+
+      // let n = prompt("Enter n numbers");
+      // n = Number.parseInt(n);
+
+      // let i=0;
+      // while(i<=n){
+      //     console.log(i);
+      //     i++;
+      // }
+
+      // print a string by for loop
+
+      // let name = "richa";
+      // for(let i = 0; i<5 ;i++){
+      //     console.log(name[i]);
+      // }
+
+      // methods of array
+
+      let numbers = [21, 33, 100, 89, 301, 122, 221, 321, 123, 411];
+      console.log(numbers.toString()); //convert to string
+
+      console.log(numbers.join("_")); //insert an element
+
+      console.log(numbers.pop()); //updates original array n popped last element
+      console.log(numbers);
+
+      console.log(numbers.push(1021, 1022)); //push numbers in last, modifies array
+      console.log(numbers);
+
+      console.log(numbers.shift()); //removes first element and returns
+      console.log(numbers);
+
+      console.log(numbers.unshift(2021, 2022));
+      console.log(numbers);
+
+      console.log(delete numbers[5]); //delete is an operator and delete given value or index no.
+      console.log(numbers); // delete does not modify length of array, it gives empty written at deleted space
+
+      let newNumbers = [3011, 3022, 3033, 3044];
+      console.log(numbers.concat(newNumbers)); //add new array
+
+      console.log(numbers.sort()); // sort by alphabetically
+
+      let compare = (a, b) => {
+        return a - b;
+      };
+
+      console.log(numbers.sort(compare)); // sort in ascending order by using compare function
+
+      let compareDescending = (a, b) => {
+        return b - a;
+      };
+
+      console.log(numbers.sort(compareDescending)); //sort in descending order
+
+      console.log(numbers.reverse()); //reverse the order of
+      console.log(numbers);
+
+      console.log(numbers.splice(5, 4, 4011, 4022, 4033, 4044)); //modify array by adding elements or by removing some elements(str pt, no. to be removing, numbers to be adding)
+      console.log(numbers);
+
+      console.log(numbers.slice(5)); //gives new array by removing elements
+      console.log(numbers);
+      console.log(numbers.slice(2, 5));
+
+      //looping through array
+
+      let numArray = [67, 87, 33, 45, 90, 12, 32, 15];
+
+      for (let i = 0; i < numArray.length; i++) {
+        console.log(numArray[i]);
+      }
+
+      numArray.forEach((element) => {
+        //forEach loop perform operation for each element of array
+        console.log(element + element);
+      });
+
+      let nString = "tanishi kesariya";
+
+      console.log(Array.from(nString)); //array from gives array from an html collection or string
+
+      for (let i of numArray) {
+        console.log(i); //for of gives value of an array
+      }
+
+      for (let i in numArray) {
+        //for in gives key of an array
+        console.log(i);
+      }
+
+      let newnumArray = numArray.map((element) => {
+        //map method
+        return element + 10;
+      });
+      console.log(newnumArray);
+      console.log(numArray);
+
+      let b = numArray.filter((a) => {
+        //filter an array, create an array with new values
+        return a > 30;
+      });
+
+      console.log(b);
+
+      let c = numArray.reduce((element) => {
+        return element + element;
+      });
+      console.log(c);
+
+      //practice on arrays
+
+      // let prArray = [31,41,51,61,71,81];
+      // let value = prompt("Add the number to the each number of an array");
+      // let numvalue = Number.parseInt(value);
+      // for (let i=0; i<prArray.length;i++){
+      //     console.log(prArray[i]+numvalue);
+      // }
+
+      //ques1- take the value from user and add in array
+
+      // let arr = [21,31,41,51,61];
+      // let val = prompt("Enter the value");
+      // val = Number.parseInt(val);
+      // arr.push(val);
+      // console.log(arr);
+
+      //ques2- keep adding numbers to the array until 0 is added
+
+      // let arr = [21,31,41,51,61];
+      // let val;
+      // do{
+
+      //     val = prompt("Enter the value");
+      //     val = Number.parseInt(val);
+      //     arr.push(val);
+
+      // }while(val!=0);
+      // console.log(arr);
+
+      //ques3- print no divisible by 10 from an array by using filter
+
+      let arr = [21, 31, 41, 51, 61, 30, 50];
+      // let val = prompt("Enter the value");
+      // val = Number.parseInt(val);
+      let nRR = arr.filter((element) => {
+        return element % 10 == 0;
+      });
+      console.log(nRR);
+
+      //ques4- create an array of square of given numbers
+
+      let arr4 = [21, 30, 56, 200, 304, 50];
+      // arr4.forEach((element)=>{      //by using forEach loop
+
+      //     console.log(element*element);
+      // });
+
+      let ansArr4 = arr4.map((element) => {
+        return element * element;
+      });
+      console.log(ansArr4);
+
+      //ques5- factorial of n natural numbers of an array by using reduce method
+      let arr5 = [1, 2, 3, 4, 5, 6];
+      let factArr5 = arr5.reduce((x1, x2) => {
+        return x1 * x2;
+      });
+      console.log(factArr5);
+
+      let Arr = [20, 30, 11, 51, 26];
+
+      Arr.push(100);
+
+      Arr.pop();
+
+      Arr.unshift(99);
+
+      Arr.shift();
+
+      Arr.reverse();
+
+      console.log(Arr);
+
+      x = Arr.includes(11);
+
+      x = Arr.includes(50);
+
+      let fruits = ["apple", "banana", "mango", "strawberry"];
+
+      let veggies = ["brinjal", "potato", "tomato"];
+
+      x = fruits[3][1];
+
+      const allFruits = [fruits, veggies];
+
+      console.log(allFruits);
+
+      x = allFruits[0][2];
+
+      x = allFruits[1][2];
+      
+      //first method to concatenate two arrays
+      x = fruits.concat(veggies); //like string we can cocatenate arrays too
+
+      // second is spread operator(...)
+
+      x = [...fruits, ...veggies];
+
+      //flatten array (break nested arrays into single array)
+
+      arr = [1, 2, [3, 5], [9, 8], 10, 12];
+      x = arr.flat();
+
+      x = Array.isArray(fruits);
+      console.log(x);
+    </script>
+  </body>
+</html>

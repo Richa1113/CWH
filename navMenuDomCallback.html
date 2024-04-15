@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu</title>
+    <style>
+        .navbar{
+            background-color: rgb(170, 236, 236);
+            border: solid rgb(154, 222, 154);
+            border-radius: 38px;
+            /* width: 600px; */
+        }
+
+        .navbar ul{
+            overflow: auto;
+        }
+        .navbar li{
+          float: left;
+          list-style: none;
+          margin: 2px;
+        }
+        .navbar input{
+            float: right;
+            margin: 4px;
+        }
+        .navbar li a{
+            padding: 6px;
+        }
+        .bulbClass{
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+            margin: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+        <ul class="ul">
+            <li class="li"><a href="#">HOME</a></li>
+            <li class="li"><a href="#">ABOUT US</a></li>
+            <li class="li"><a href="#">SERVICES</a></li>
+            <li class="li"><a href="#">CONTACT US</a></li>
+            <input type="text" placeholder="SEARCH A WEBSITE"></input>
+        </ul>
+        </nav>
+    </header>
+    <!-- div.box#box*4
+    <div class="box" id="box"></div>
+    <div class="box" id="box"></div>
+    <div class="box" id="box"></div>
+    <div class="box" id="box"></div>
+    <script>
+        console.log("Hello World");
+    </script> -->
+    
+    <div>
+        <table id="id1" class="table1">
+            <th colspan="3">
+                its a table
+            </th>
+            <tr>
+                <td id="td1">car1</td>
+                <td>car2</td>
+                <td>car3</td>
+            </tr>
+            <tr>
+                <td>bus1</td>
+                <td>bus2</td>
+                <td>bus3</td>
+            </tr>
+        </table>
+    </div>
+    
+     <div id="div1" hidden>I am hidden</div>
+
+     <!-- or can be done by JS -->
+     <div id="div2">I am hidden</div> 
+     
+     <!-- adding buttons to handle events -->
+     <div>
+     <button onclick="alert('Please give me one plate chowmein')">chow</button>
+     <button onclick="alert('Please give me one plate of vada pow')">pow</button>
+     <button onclick="alert('Please give me one plate of vada woow')">woow</button>
+    </div>
+
+    <!-- storing bookmarks of favourite websites -->
+
+    <div>
+    <a href="http://google.com" target="_blank">Google</a>
+    <a href="http://fb.com" target="_blank">Facebook</a>
+    <a href="http://twitter.com" target="_blank">Twitter</a>
+    </div>
+    <div>
+        <button onclick="google()">Google</button>
+        <button id="facebook">Fcebook</button>
+    </div>
+
+    <div id="bulb" class="bulbClass"></div>
+    <script>
+       //DOM navigation methods
+
+       document.body.firstElementChild.style.background = "red";
+       let lis = document.body.querySelectorAll(".li");
+       lis[0].style.background = "green";
+       lis[2].style.background = "green";
+        
+       let as = document.body.getElementsByTagName("a");
+       as[0].style.color = "yellow";
+       as[2].style.color = "yellow";
+
+       let tablecss = document.body.getElementsByTagName("td");
+       tablecss[1].style.color = "blue";
+       tablecss[4].style.color = "blue";
+
+        let tableId = document.getElementById("id1");  
+        tableId.style.background = "rgb(208 187 212)";
+
+        //matches, closest and contains methods
+
+        // let id2 = document.getElementById("id1");
+        console.log(id1.matches(".class"));    //gives false for unmatched css class
+        console.log(id1.matches(".table1"));   //gives true for matched css class
+        
+        console.log(td1.closest(".table1"));   //gives closest ancestor of having class table1 name
+        console.log(td1.closest(".class"));    //gives null if not matches
+        
+        console.log(id1.contains(td1));
+        console.log(td1.contains(id1));
+
+        console.log(tableId);   //returns element as DOM tree
+        console.dir(tableId);   //console.dir returns element as an object
+        
+        console.log(document.firstChild.nodeName);//node name given for any first node though comment or text
+        console.log(document.firstChild.tagName);  // tag name only given for element nodes
+        console.log(document.body.firstChild.nodeName);
+        console.log(document.body.firstElementChild.tagName);
+        
+        console.log(td1.innerHTML); // gives inner html of element node, only valid for element node
+        console.log(td1.outerHTML);  //gives full html, inner html+element itself
+
+        td1.innerHTML = "no car"; //can set innerHTML valoe of an element
+
+        console.log(document.body.firstChild.nodeValue); 
+
+        // console.log(document.body.textContent); //whole text of body gives
+        
+        div2.hidden = true;
+
+        //Browser events, event listener and event object
+         
+        function google(){
+            //window.open("http://google.com","_blank"); or
+            window.location = "http://google.com";
+        }
+        function facebook(){
+            window.open("http://fb.com","_blank");
+        }
+
+
+        document.getElementById("facebook").addEventListener("click",facebook); //add event listener
+        
+        // setInterval(function(){
+        //     let bulb = document.getElementById("bulb");
+        //     bulb.classList.toggle("bulbClass");
+        // },500);
+
+        //callback functions
+
+        function loadScript(url, callback){
+                var script = document.createElement("script");
+                script.src = url;
+                script.onload = function(){
+                    console.log("script is loaded with: "  + url);
+                    callback(null);
+                    //callback2();
+                };
+                script.onerror = function(){
+                    console.log("Script having error in loading: " + url);
+                    callback(new Error("src got some error"));
+                }
+                document.body.appendChild(script);
+                
+
+        };
+
+        function hello(error){
+            alert("hello");
+        }
+        function GM(){
+            alert("goodmorning!");
+        }
+        loadScript("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js", hello);
+        //loadScript("https://cdn.jsdelivr.net/nlppm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js", GM);
+
+    </script>
+</body>
+</html>

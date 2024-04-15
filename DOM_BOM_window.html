@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM BOM and window objects manipulation</title>
+    <style>
+        .navbar {
+            background-color: rgb(170, 236, 236);
+            border: solid rgb(154, 222, 154);
+            border-radius: 38px;
+            /* width: 600px; */
+        }
+
+        .navbar ul {
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+            list-style: none;
+            margin: 2px;
+        }
+
+        .navbar input {
+            float: right;
+            margin: 4px;
+        }
+
+        .navbar li a {
+            padding: 6px;
+        }
+
+        .classSet{
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id ="nav" class="navbar">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="#">CONTACT US</a></li>
+                <input type="text" placeholder="SEARCH A WEBSITE"></input>
+            </ul>
+        </nav>
+    </header>
+    <div id="first" class="hello" data-game="mario" data-player="richa">i am hidden</div>
+
+    <div id="second">i am second div</div>
+    <div id="third">i am third div</div>
+    <script>
+        window.console.log(window);
+        console.log(document.head);
+        document.body.style.background = "#a6a6c3";
+        console.log(document.body.firstChild);      //space taken as text between body and script tag hence it gives #text
+        console.log(document.body.lastChild);
+        console.log(document.body.childNodes);
+        let arr = Array.from(document.body.childNodes);  //can convert html collection into an array
+        console.log(arr);
+        let b = document.body;
+        console.log("First child of document is :" ,  b.firstChild);  //counts text, comments etc.
+        console.log("First child of document is :" , b.firstElementChild);
+        document.body.firstElementChild.style.background = "red";
+        
+        //html attributes and their methods
+
+        let a = document.getElementById("nav");
+        console.log(a.hasAttribute("id"));        //tells given element has specific attributes or not
+        console.log(a.hasAttribute("class"));
+        console.log(a.hasAttribute("style"));
+         
+        console.log(a.getAttribute("id"));       //tells name of attribute
+        console.log(a.getAttribute("class"));
+        console.log(a.getAttribute("style"));
+        
+        a.setAttribute("class", "classSet navbar");   //can set attributes of elements
+        let divFirst = document.getElementById("first");
+        divFirst.setAttribute("hidden", "true");
+        
+        divFirst.removeAttribute("class");    //removes attributes
+
+        console.log(a.attributes);    //gives all attributes
+
+        console.log(divFirst.dataset); //gives name of custom attributes
+
+        //appending nodes
+
+        // let c = document.getElementById("second");           //classic way of insertion of html
+        // c.innerHTML = c.innerHTML + '<h1>Hello world!</h1>';
+
+        let div = document.createElement("div");       //creating an element
+        div.innerHTML = "<h1>Hello world!</h1>";
+        // document.body.append(div);                  //adding html by using append method
+
+        let second = document.getElementById("second");
+        let third = document.getElementById("third");
+        // second.append(div);                             //append node after second div
+
+        // second.prepend(div);                             //append node before second div
+
+        //second.before(div);                               //append node before second div
+        //second.after(div);
+ 
+        //second.replaceWith(div);                       //replace second div with created div
+
+        
+        
+        
+        //insert adjacent html/text/element
+
+        //second.insertAdjacentHTML('beforebegin',div.innerHTML); //insert html just before beginning of element
+        //or
+        //second.insertAdjacentHTML('beforebegin','<div><h1>Hello World!</h1></div>');
+
+        //second.insertAdjacentElement('beforebegin',div);  //insert html element before beginning
+        //third.insertAdjacentElement('beforebegin',div);
+
+        //second.insertAdjacentText('beforebegin', 'hello world!'); //insert text before start of the element
+
+        //second.insertAdjacentHTML('afterbegin','<div><h1>Hello world!</h1></div>');
+
+        //second.insertAdjacentHTML('beforeend','<div><h1>Hello World!</h1></div>');
+        //second.insertAdjacentHTML('afterend','<div><h1>Hello World!</h1></div>');
+        //third.remove();                                                           //removal of third node
+
+
+        //classname and classlist
+        third.className = "text-black red";  //adding claases to an element
+        third.classList.add("font");        //add single class
+        third.classList.remove("font");
+        console.log(third.classList.contains("red"));
+        third.classList.toggle("font");      //toggle if it contains removed it, if removed add it
+        third.classList.toggle("font");
+
+        //setTimeout and clearTimeout
+        // let var = 0;
+        // function greet(name, byeText){
+        //     alert("Hello GoodMorning!" +name + byeText );
+        // };
+        // let var = setTimeout(greet, 5000 , "Richa", "byeeee");
+
+        let set = setTimeout(function(){
+               alert("hello world!");
+        },5000);
+        console.log(set); //give timer id of settimeout
+        let pr = prompt("Do you want to run the set time out?");
+        if("n"==pr){
+            clearTimeout(set);
+        }
+        
+        console.log(set);
+
+        </script>
+</body>
+
+</html>

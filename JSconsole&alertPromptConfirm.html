@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>methods of console object & alert, confirm, prompt</title>
+</head>
+
+<body>
+
+    <!-- look at console for code execution -->
+    <script>
+
+        // alert, prompt and confirm
+
+        // alert("Enter the value of a");
+        // let a = prompt("Enter a here:", 20);
+        // a = Number.parseInt(a);
+        // alert("the a is type of " + (typeof a));
+        // let write = confirm("Do you want to write the given number in document");
+        // if(write){
+        //     document.write("your given number as input a is:" + a);
+        // }
+        // else{
+        //     document.write("Please allow me to write on the document");
+        // }
+
+        //console methods
+
+        console.log(console);
+        console.info("this is info");
+        console.warn("warn");
+        console.error("err");
+        console.assert("err" !=false);
+        console.assert("err" == false);
+        let a = {a:1, b:2, c:3};
+        console.table(a);
+
+        //ques1- take age by promp and print driving situations
+
+        // let age = prompt("Enter your age");
+        // age = Number.parseInt(age);
+
+        // if(age>=18){
+        //     document.write("As you are 18+ you can drive");
+        // }
+        // else{
+        //     document.write("You are not allowed to drive");
+        // }
+
+        //or by using alert anf function
+
+        const candrive = (age) => {
+
+            return (age >= 18) ? true : false;
+        };
+
+        //ques2&3- ask user if he wants to play again or not, (so the while loop) and if he entered a negative value then show an error message(by using if age condition)
+
+        // let runAgain = true;
+
+        // while (runAgain) {
+
+        //     let age = prompt("Enter your age");
+        //     age = Number.parseInt(age);
+        //     if (age < 0) {
+        //         console.error("Enter a valid age");
+        //         break;
+        //     }
+        //     if (candrive(age)) {
+        //         alert("You can drive");
+        //     }
+        //     else {
+        //         alert("You are not allowed");
+        //     }
+        //     runAgain = confirm("Do you want to play again?");
+        // }
+
+        //ques4- if user input is greater than 4 then redirect to another url
+
+        // let num = prompt("Enter the number");
+        // num = Number.parseInt(num);
+        // if(num>=4){
+        //    location.href = "https://www.google.co.in/";
+           
+        // }
+        // else{
+        //     alert("invalid number");
+            
+        // }
+
+        //ques5- change the background colour of page using input of user
+
+        let color = prompt("Enter the colour you want to change background of page");
+        document.body.style.background = color;
+
+        console.group("simple");// can make group in console
+        console.log(100);
+        console.log("design");
+        console.groupEnd();
+
+        let styles = 'background-color: red; color: yellow; padding: 10px';
+        console.log('%cHello world', styles);
+
+    </script>
+</body>
+
+</html>

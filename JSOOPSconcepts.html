@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOPS concepts</title>
+  </head>
+
+  <body>
+    <p>code execution in console</p>
+    <script>
+      let obj = {
+        name1: "Richa",
+        age: 30,
+        gender: "female",
+        language: "javascript",
+      };
+
+      let p = {
+        // methods are defining in objects like this
+        run: function () {
+          //alert("run");
+        },
+      };
+
+      console.log(obj);
+
+      obj.__proto__ = p; //using prototype to set new method in an object
+      obj.run();
+
+      p.__proto__ = {
+        name2: "Tanishi",
+      };
+
+      console.log(obj.name1);
+      console.log(obj.name2); //first goes to check name2 property in object obj, its missing there, then goes to prototype of obj(here p), p does note have name2 property too then goes to prototype of p
+
+      //classes in js
+      class RailwayForm {
+        submit() {
+          //alert(this.name + ": Your form is submitted with train No :" + this.trainNo);
+        }
+
+        cancel() {
+          //alert(this.name + " :Your form is cancelled with train No :" + this.trainNo);
+        }
+
+        fillForm(givenName, trainNo) {
+          this.name = givenName;
+          this.trainNo = trainNo;
+        }
+      }
+
+      let HarryForm = new RailwayForm();
+      let RichaForm1 = new RailwayForm();
+      let RichaForm2 = new RailwayForm();
+
+      HarryForm.fillForm("Harry", 12345);
+      HarryForm.submit();
+      HarryForm.cancel();
+
+      RichaForm1.fillForm("Richa", 54321);
+      RichaForm1.submit();
+      RichaForm2.fillForm("Richa", 12345);
+      RichaForm2.submit();
+      RichaForm2.cancel();
+
+      //constructor in JS
+
+      class Animal {
+        constructor(nameAnimal, colourAnimal) {
+          this.nameA = nameAnimal;
+          this.colourA = colourAnimal;
+        }
+
+        run() {
+          console.log(this.colourA + " colour " + this.nameA + " is running ");
+        }
+
+        shout() {
+          console.log(this.colourA + " colour " + this.nameA + " is shouting");
+        }
+      }
+
+      //class inheritence
+      //class inheritence used extends keywords to extend parent class
+      class Monkey extends Animal {
+        jump() {
+          console.log(this.colourA + " " + this.nameA + " is jumping");
+        }
+
+        hide() {
+          console.log(`${this.nameA} is hiding`);
+        }
+      }
+
+      let monkey = new Monkey("chimpu", "brown");
+      let dog = new Animal("bruno", "white");
+
+      monkey.run();
+      monkey.shout();
+      monkey.jump();
+      monkey.hide();
+
+      dog.run();
+      dog.shout();
+      //dog.jump();   gives an error coz parent class cant excess child class of methods
+
+      //method overriding and super keyword
+
+      class Employee {
+        constructor(nameEMP) {
+          console.log(`${this.nameEMP}, Employee constructer is here`);
+          this.nameEMP = nameEMP;
+        }
+        login() {
+          console.log(`Employee has logged in`);
+        }
+
+        logout() {
+          console.log(`Employee has logged out`);
+        }
+
+        takesLeaves(leaves) {
+          console.log(`Employee has requested ${leaves} leaves`);
+        }
+      }
+
+      class Programmer extends Employee {
+        //  constructor(...args){  //if there is no constructor here, a constructor is created in child class automatically
+        //     super(...args);
+        //  }
+
+        //if we want to write child class constructer particularly
+        constructor(nameEMP) {
+          super(nameEMP);
+          console.log(`Newly written constructor for programmer class`);
+          this.nameEMP = nameEMP;
+        }
+        requestCoffee(x) {
+          console.log(`Employee has requested for ${x} coffee in a whole day`);
+        }
+
+        //method overriding
+        takesLeaves(leaves) {
+          //by super keyword we use code snippet of parent method
+          super.takesLeaves(leaves);
+          console.log("But this is programmer, so one extra leave has given");
+          console.log(
+            `Employee has approved one extra leave, total leaves ${leaves + 1}`
+          );
+        }
+      }
+
+      //let emp = new Employee();
+      //emp.takesLeaves(5); //prints takesLeaves() method from parent class employee
+
+      let pr = new Programmer("Richa");
+      pr.login();
+      pr.logout();
+      pr.requestCoffee(5);
+      pr.takesLeaves(5); // prints takesLeaves() method from extended child class programmer, here method overrides
+
+      //static method
+      class Animal1 {
+        constructor(name) {
+          this.name = Animal1.capitalization(name);
+        }
+
+        walk() {
+          console.log(`Animal ${this.name} is walking`);
+        }
+
+        static capitalization(name) {
+          return name.charAt(0).toUpperCase() + name.substr(1, name.length);
+        }
+      }
+
+      let emp1 = new Animal1("jirrafe");
+      emp1.walk();
+      //emp1.capitalization("jirrafe"); //we can not use static method as an object method of a class
+
+      //getters and setters in class
+
+      class Shape {
+        constructor(name) {
+          this._name = name;
+        }
+
+        fly() {
+          alert("I am flying");
+        }
+
+        get name() {
+          //to get name as a property function
+          return this._name;
+        }
+
+        set name(newname) {
+          //set a name to an object of a class
+          this._name = newname;
+        }
+      }
+
+      class hexagon extends Shape {
+        sides() {
+          console.log("Hexagon has 6 sides");
+        }
+      }
+
+      let sh = new Shape("Triangle");
+      sh.fly();
+      console.log(sh.name);
+      sh.name = "Square";
+      console.log(sh.name);
+
+      let hx = new hexagon("hexagon");
+
+      console.log(sh instanceof Shape);
+      console.log(sh instanceof hexagon);
+      console.log(hx instanceof Shape);
+      console.log(hx instanceof hexagon);
+
+      let Person = {
+        name: "john",
+        age: 30,
+      };
+      console.log(Person);
+      let newPerson = Person;
+      newPerson.name = "bradley";
+      console.log(newPerson);
+      console.log(Person);
+
+      let x;
+      x = true; //true, boolean
+
+      x = Number(true); // 1, number
+
+      x = Number(false); //0, number
+
+      x = 1 + true; // 2, number
+
+      x = 5 + undefined;
+
+      x = undefined + undefined; //anything added in undefined gives undefined
+
+      x = "hello" + " " + "Richa";
+
+      x = "hello" * 5; //NaN, number
+
+      x = "hello" + 10; // concatenate number as string
+
+      x = 10 + "10"; //also concatenated
+
+      x = 10 * "10"; //now string behave like number = 100 result
+
+      x = "10" / 2; //here also string behave like number
+
+      x = "10" - 5; // " " " "
+
+      x = "hello" / 2; //NaN, number
+
+      x = "hello" - 2; //NaN, number
+
+      x = "developers";
+      x = "richa rawat";
+      x = x[0].toUpperCase() + x.slice(1); // capitalize first letter of string or
+
+      x = x[0].toUpperCase() + x.substring(1); // capitalize first letter of string or
+      console.log(x, typeof x);
+
+      let person = {
+        firstName : "john",
+        lastName : "doe",
+        address : {
+          street : "muir road",
+          state : "MA"
+        }
+      }
+      
+      x = person;
+      x = person.address;
+      x = person.address.street;
+      delete person.firstName;
+      person.firstName = "richa"
+      console.log(person);
+
+      let obj1 = {a:1, b:2, c:3};
+      let obj2 = {c:4, d:5, e:6};
+
+      //spread operator like array to make one array
+      let obj3 = {...obj1, ...obj2};
+      x = obj3;
+
+      //using assign(before ECMA6 this was the method used for assemble two arrays into one array)
+
+      x = Object.assign({}, obj1, obj2); //like concat in array
+
+      //objects within array
+      let arrObj = [
+        {id:1, work: "go to schhool"},
+        {id:2, work: "study"},
+        {id:3, work: "return from school"}
+      ];
+
+      x = arrObj[0].id;
+      x = arrObj[2].work; //we can iterate to values like this
+
+      x = Object.keys(obj1); //let obj1 = {a:1, b:2, c:3}; iterate over keys on objects
+      // result-- [a, b, c]
+      x = Object.keys(obj1).length; // gives length of keys of object
+      x = Object.values(obj1);
+      x = Object.entries(arrObj); //returns an array of a given object's own enumerable string-keyed property key-value pairs
+      x = Object.entries(obj2); //let obj2 = {c:4, d:5, e:6}; result of it should be like an array of 3 value pairs as -- {'c', 4}, {'d', 5}, {'e', 6}
+      x = person.hasOwnProperty("lastName");
+      console.log(x);
+      
+    </script>
+  </body>
+</html>

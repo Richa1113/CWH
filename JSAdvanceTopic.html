@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JS</title>
+</head>
+<body>
+    <div id="div1">Code executions in console</div>
+    <script>
+        // [1] IIFE - why it comes in 
+        
+        let a = ()=>{                               //expression arrow function
+            return new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                //resolve(1113);
+            }, 2000);
+        })
+    }
+    
+    //first method--> we can call promise 3 times using a function below
+    // let f = async ()=>{
+    //     let b = await a();
+    //     console.log(b);
+
+    //     let c = await a();
+    //     console.log(c);
+
+    //     let d = await a();
+    //     console.log(d);
+    // }
+
+    // f();
+
+    //second method--> or we can wrap whole async function in a self called function like below which is called IIFE
+    
+    (async ()=>{
+        let b = await a();
+        console.log(b);
+
+        let c = await a();
+        console.log(c);
+
+        let d = await a();
+        console.log(d);
+    })();
+
+    //[2] destructuring
+    let arr = [2,3,5];
+    let [m,n,o] = arr;
+    console.log(m,n,o);
+
+    // let arr1 = [2,3,4,5,6];
+    // let [p,q,r,s,t,u] = arr1;
+    // console.log(p,q,r,s,t,u);
+
+    let arr1 = [2,3,4,5,6];
+    let [p,q,,,...rest] = arr1;
+    console.log(p,q,rest);
+    let [f,g,h,...rest1] = arr1;
+    console.log(f,g,h,rest1);
+    
+    const obj = {obj1:10 , obj2:12};
+    const {obj1,obj2} = obj;
+    console.log(obj1,obj2);
+
+    //spread syntax
+
+    let arr2 = [3,4,5,6];
+    let obj3 = {...arr2};
+    console.log(obj3);
+
+    function sum(v1, v2, v3){
+        return v1+v2+v3;
+    }
+
+    function sum2(t1,t2,t3,t4){
+        return t1+t2+t3+t4;
+    }
+
+    console.log(sum(...arr2));
+    console.log(sum2(...arr2));
+
+    let obj4 = {
+        name1: "Tanishi",
+        company: "XYZ",
+        address: "ABC"
+    };
+
+    console.log(obj4);
+    console.log({...obj4, name: "Richa", company: "RST" });
+    console.log({...obj4, name1:"Ravi", hobby:"irritate to others"});
+
+    //[3] local, gloabl, function scope and closures
+    function x(){
+        var u = 3;
+        function y(){
+            console.log(u);
+        }
+        return y;
+    }
+    let z = x();
+    console.log(z);
+    z();  // it prints value of u, due to lexical environment and closure
+    //console.log(u); --> gives an error coz it is in local or block scope
+
+    //practice set
+    const pr = async (text)=>{
+        return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(text)
+        }, 2000);
+      })
+    };
+
+    (async()=>{
+        let x = await pr("hello");
+        console.log(x);
+        let y = await pr("world!");
+        console.log(y);
+    }) ();
+
+    //write a js function which resolve a promise after n seconds, the function n takes as the parameter.
+    //use an IIFE to execute the function with different values of n
+    let pr2 = async(text, n)=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve(text);
+            }, 1000 * n);
+        })
+    }
+
+    (async ()=>{
+        let h = await pr2("hello", 5);
+        console.log(h);
+        let i = await pr2("world", 6);
+        console.log(i);
+        let j = await pr2("i m resolving in 5 seconds", 7);
+        console.log(j);
+    }) ();
+
+    //simple interest calculator
+    function simpleInterest(p,r,t){
+         console.log((p*r*t)/100);
+    }
+    
+    simpleInterest(1000,10,5);
+
+    </script>
+</body>
+</html>
